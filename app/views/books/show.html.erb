@@ -32,7 +32,7 @@
         </td>
         <td><p>コメント数:<%= @book.comments.count%></p></td>
         </tr>
-        <tr><% @comments.each do |comment| %>
+        <tr><% @book.comments.each do |comment| %>
             <td><%= attachment_image_tag comment.user, :profile_image, fallback: "no-image-icon.jpg", format: "jpg", size: "100x100" %></td>
             <td><%= comment.comment %></td>
               <% if comment.user_id == current_user.id %>
@@ -41,7 +41,6 @@
             </tr>
             <% end %>
       </table>
-      <%= render 'layouts/errors', obj: @comment %>
       <%= form_with(model:[@book,@comment], local: true) do |f| %>
       <div class="form-group">
       <%= f.text_area :comment %>
