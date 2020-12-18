@@ -4,6 +4,8 @@ before_action :authenticate_user!
     @book = Book.find(params[:id])
     @user = @book.user
     @books = Book.new
+    @comments = Comment.all
+    @comment = Comment.new
   end
 
   def index
